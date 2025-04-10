@@ -22,7 +22,7 @@ class CustomBottomNavBar extends StatelessWidget {
         TabItem(icon: Icons.calendar_today, title: "Calendar"),
         TabItem(icon: Icons.miscellaneous_services, title: "Services"),
         TabItem(icon: Icons.map, title: "Map"),
-        TabItem(icon: Icons.info, title: "About"),
+        TabItem(icon: Icons.info, title: "News"),
         TabItem(icon: Icons.settings, title: "Settings"),
       ],
       initialActiveIndex: currentIndex,

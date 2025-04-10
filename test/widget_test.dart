@@ -1,30 +1,24 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:sjut/main.dart';
+import 'package:sjut/screens/login_screen.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Splash screen transitions to LoginScreen', (WidgetTester tester) async {
+    // Build the app with LoginScreen as initialScreen
+    await tester.pumpWidget(const MyApp(initialScreen: LoginScreen()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify splash screen is displayed initially
+    expect(find.byType(AnimatedSplashScreen), findsOneWidget);
+    expect(find.byType(Image), findsOneWidget); // Check for logo
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Wait for the splash duration (3000ms) and trigger a frame
+    await tester.pump(const Duration(milliseconds: 3000));
+    await tester.pumpAndSettle(); // Wait for animations to complete
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify it transitions to LoginScreen
+    expect(find.byType(LoginScreen), findsOneWidget);
+    expect(find.text('Login'), findsOneWidget); // Check app bar title
   });
 }

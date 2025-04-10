@@ -1,5 +1,6 @@
 {
     "dart.flutterHotReloadOnSave": "all",
     "dart.hotReloadOnSave": "all",
-    "dart.previewHotReloadOnSaveWatcher": true
+    "dart.previewHotReloadOnSaveWatcher": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
